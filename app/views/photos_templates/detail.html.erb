@@ -1,0 +1,177 @@
+<body>
+    <nav>
+      <ul>
+        <li>
+          <a href="/users">Users</a>
+        </li>
+        <li>
+          <a href="/photos">Photos</a>
+        </li>
+      </ul>
+    </nav>
+
+    <h1>Photo Details</h1>
+
+<dl>
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="https://robohash.org/eligendiprovidentsed.png?size=300x300&amp;set=set1" height="300px">
+  </dd>
+
+  <dt>
+    Caption
+  </dt>
+  <dd>
+    <p>
+      Every flight begins with a fall.
+    </p>
+  </dd>
+
+  <dt>
+    Owner
+  </dt>
+  <dd>
+    galen
+  </dd>
+
+  <dt>
+    Posted
+  </dt>
+  <dd>
+    2017-10-16 01:36:25 UTC
+  </dd>
+
+  <dt>
+    Edit photo
+  </dt>
+  <dd>
+    <form action="/update_photo/628" method="post">
+      <label for="browser_image">Image</label>
+      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="https://robohash.org/eligendiprovidentsed.png?size=300x300&amp;set=set1">
+
+      <label for="browser_caption">Caption</label>
+      <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo...">Every flight begins with a fall.</textarea>
+
+      <button>Update photo</button>
+    </form>
+  </dd>
+
+  <dt>
+    Delete photo
+  </dt>
+  <dd>
+    <a href="/delete_photo/628">
+      Delete this photo
+    </a>
+  </dd>
+</dl>
+
+<h2>Comments</h2>
+
+<table>
+  <tbody><tr>
+    <th>
+      Commenter
+    </th>
+
+    <th>
+      Comment
+    </th>
+
+    <th>
+      Posted
+    </th>
+  </tr>
+
+
+    <tr>
+      <td>
+        jolie
+      </td>
+
+      <td>
+        There was never a genius without a tincture of madness.
+      </td>
+
+      <td>
+        2019-03-19 03:56:09 UTC
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        chi
+      </td>
+
+      <td>
+        Dignity does not consist in possessing honors, but in deserving them.
+      </td>
+
+      <td>
+        2018-11-28 14:09:53 UTC
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        nakita
+      </td>
+
+      <td>
+        Control thy passions lest they take vengence on thee.
+      </td>
+
+      <td>
+        2018-10-08 19:09:48 UTC
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        johnie
+      </td>
+
+      <td>
+        It's not what happens to you, but how you react to it that matters.
+      </td>
+
+      <td>
+        2018-07-20 04:14:14 UTC
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        diego
+      </td>
+
+      <td>
+        There was never a genius without a tincture of madness.
+      </td>
+
+      <td>
+        2018-06-16 23:47:47 UTC
+      </td>
+    </tr>
+</tbody></table>
+
+<h3>Add a new comment</h3>
+
+<form action="/add_comment" method="post">
+  <label for="browser_photo_id">Photo ID</label>
+  <input id="browser_photo_id" type="text" placeholder="Enter the photo ID" name="input_photo_id" value="628">
+
+  <label for="browser_author_id">Author ID</label>
+  <input id="browser_author_id" type="text" placeholder="Enter your author ID" name="input_author_id">
+
+  <label for="browser_comment">Comment</label>
+  <textarea id="browser_comment" type="text" placeholder="Enter a comment..." name="input_comment"></textarea>
+
+  <button>Add comment</button>
+</form>
+
+  
+
+</body>
