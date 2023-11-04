@@ -149,6 +149,11 @@ class User < ApplicationRecord
     return matching_photos
   end
 
+  def get_all
+    return User.all
+  end
+
+
   def discover
     array_of_photo_ids = Array.new
 
