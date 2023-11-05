@@ -11,6 +11,18 @@ class UsersController < ApplicationController
     render({ :template => "users_templates/detail"})
   end
 
+  def create
+    @the_user = User.new
+    @the_user.username = params.fetch("input_username")
+
+    if @the_user.valid?
+      @the_user.save
+      redirect_to("/users/#{@the_user.username}", { :notice => "User crated successfully."} )
+    else
+      redirect_to("/users/#{@the_user.username}", { :alert => "User failed to create successfully." })
+    end
+  end
+
   def update
     user_id = params.fetch("path_id")
     new_username = params.fetch("input_username")

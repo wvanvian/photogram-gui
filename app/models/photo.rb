@@ -15,6 +15,17 @@
 class Photo < ApplicationRecord
   validates(:poster, { :presence => true })
 
+  def define_photo_object_params
+    photo_row = Photo.where({:id => self.id})[0]
+    self.caption = photo_row.caption
+    self.comments_count = photo_row.comments_count
+    self.image = photo_row.image
+    self.likes_count = photo_row.likes_count
+    self.created_at = photo_row.created_at
+    self.updated_at = photo_row.updated_at
+    self.owner_id = photo_row.owner_id
+  end
+
   def poster
     my_owner_id = self.owner_id
 
@@ -32,6 +43,14 @@ class Photo < ApplicationRecord
 
     return matching_comments
   end
+
+  def get_commenter_username(author_id)
+    comment = Comment.new
+    comment.author_id = author_id
+    the_user = comment.commenter
+    
+    return the_user.username
+  end 
 
   def likes
     my_id = self.id

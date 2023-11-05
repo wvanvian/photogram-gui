@@ -17,7 +17,7 @@
     Image
   </dt>
   <dd>
-    <img src="https://robohash.org/eligendiprovidentsed.png?size=300x300&amp;set=set1" height="300px">
+    <img src=<%= @photo.image %> height="300px">
   </dd>
 
   <dt>
@@ -25,7 +25,7 @@
   </dt>
   <dd>
     <p>
-      Every flight begins with a fall.
+      <%= @photo.caption %>
     </p>
   </dd>
 
@@ -33,26 +33,26 @@
     Owner
   </dt>
   <dd>
-    galen
+    <%= @photo.poster.username %>
   </dd>
 
   <dt>
     Posted
   </dt>
   <dd>
-    2017-10-16 01:36:25 UTC
+    <%= @photo.created_at %>
   </dd>
 
   <dt>
     Edit photo
   </dt>
   <dd>
-    <form action="/update_photo/628" method="post">
+    <form action=<%= "/update_photo/#{@photo.id}" %> method="post">
       <label for="browser_image">Image</label>
-      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value="https://robohash.org/eligendiprovidentsed.png?size=300x300&amp;set=set1">
+      <input id="browser_image" type="text" name="input_image" placeholder="Enter a URL for the image..." value=<%= @photo.image %>>
 
       <label for="browser_caption">Caption</label>
-      <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo...">Every flight begins with a fall.</textarea>
+      <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo..."><%= @photo.caption %></textarea>
 
       <button>Update photo</button>
     </form>
@@ -62,7 +62,7 @@
     Delete photo
   </dt>
   <dd>
-    <a href="/delete_photo/628">
+    <a href=<%= "/delete_photo/#{@photo.id}" %>>
       Delete this photo
     </a>
   </dd>
@@ -85,83 +85,28 @@
     </th>
   </tr>
 
-
+  <% @photo.comments.each do |a_comment| %>
     <tr>
       <td>
-        jolie
+        <%= @photo.get_commenter_username(a_comment.author_id) %>
       </td>
 
       <td>
-        There was never a genius without a tincture of madness.
+       <%= a_comment.body %>
       </td>
 
       <td>
-        2019-03-19 03:56:09 UTC
+        <%= a_comment.created_at %>
       </td>
     </tr>
-
-    <tr>
-      <td>
-        chi
-      </td>
-
-      <td>
-        Dignity does not consist in possessing honors, but in deserving them.
-      </td>
-
-      <td>
-        2018-11-28 14:09:53 UTC
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        nakita
-      </td>
-
-      <td>
-        Control thy passions lest they take vengence on thee.
-      </td>
-
-      <td>
-        2018-10-08 19:09:48 UTC
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        johnie
-      </td>
-
-      <td>
-        It's not what happens to you, but how you react to it that matters.
-      </td>
-
-      <td>
-        2018-07-20 04:14:14 UTC
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        diego
-      </td>
-
-      <td>
-        There was never a genius without a tincture of madness.
-      </td>
-
-      <td>
-        2018-06-16 23:47:47 UTC
-      </td>
-    </tr>
+    <% end %>
 </tbody></table>
 
 <h3>Add a new comment</h3>
 
 <form action="/add_comment" method="post">
   <label for="browser_photo_id">Photo ID</label>
-  <input id="browser_photo_id" type="text" placeholder="Enter the photo ID" name="input_photo_id" value="628">
+  <input id="browser_photo_id" type="text" placeholder="Enter the photo ID" name="input_photo_id" value=<%= @photo.id %>>
 
   <label for="browser_author_id">Author ID</label>
   <input id="browser_author_id" type="text" placeholder="Enter your author ID" name="input_author_id">
@@ -171,7 +116,5 @@
 
   <button>Add comment</button>
 </form>
-
-  
 
 </body>
