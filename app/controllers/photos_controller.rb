@@ -35,7 +35,7 @@ class PhotosController < ApplicationController
     @the_photo = Photo.find(photo.id)
     @the_photo.destroy
 
-    redirect_to("/users/#{username}", { :notice => "Photo deleted successfully."} )
+    redirect_to("/photos", { :notice => "Photo deleted successfully."} )
   end
 
   def create
