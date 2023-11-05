@@ -1,4 +1,9 @@
 class PhotosController < ApplicationController
+  def homepage
+    @photos = Photo.where.not({:id => nil})
+    render({ :template => "photos_templates/home"})
+  end
+  
   def details
     @photo = Photo.new
     @photo.id = params.fetch("path_id")
